@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Comunidad - Buscar</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#3b82f6",
+          "background-light": "#f4f4f5",
+          "background-dark": "#18181b",
+        },
+        fontFamily: { display: ["Poppins", "sans-serif"] },
+      },
+    },
+  };
+</script>
+<style>
+  .material-icons { font-size: 24px; line-height: 1; }
+</style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-zinc-900 dark:text-zinc-100">
+
+<div class="flex h-screen">
+
+  <!-- SIDEBAR -->
+  <aside class="w-64 p-6 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center gap-3 mb-10">
+        <img src="logo.png" class="w-10 h-10 object-contain" alt="Logo">
+        <span class="text-lg font-bold text-zinc-800 dark:text-zinc-200">IAversiesverdad</span>
+      </div>
+
+      <nav class="space-y-3">
+        <a href="AnalisisVeracidadTexto.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg">
+          <span class="material-icons">search</span>
+          <span>Análisis de Veracidad</span>
+        </a>
+        <a href="ResumenNoticiaTexto.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg">
+          <span class="material-icons">description</span>
+          <span>Resumen de Noticia</span>
+        </a>
+        <a href="Chatbot.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg">
+          <span class="material-icons">forum</span>
+          <span>Chatbot IA</span>
+        </a>
+
+        <!-- Comunidad con desplegable -->
+        <div class="relative">
+		  <button id="communityBtn" class="flex items-center gap-4 w-full px-4 py-3 bg-primary/10 text-primary font-semibold rounded-lg justify-between">
+            <a href="ComunidadParaTi.html">
+			<span class="flex items-center gap-4">
+              <span class="material-icons">people</span>
+              <span>Comunidad</span>
+            </span>
+			</a>
+            <span id="communityArrow" class="material-icons transition-transform">arrow_forward_ios</span>
+          </button>
+          <div id="communityMenu" class="mt-1 ml-6 flex flex-col space-y-2 hidden">
+			  <a href="ComunidadMG.html" class="community-submenu flex items-center gap-2 px-4 py-2 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg font-medium">
+				<span class="material-icons">thumb_up</span>
+				<span>Me gusta</span>
+			  </a>
+			  <a href="ComunidadRP.html" class="community-submenu flex items-center gap-2 px-4 py-2 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg font-medium">
+				<span class="material-icons">repeat</span>
+				<span>Reposteado</span>
+			  </a>
+			  <a href="ComunidadG.html" class="community-submenu flex items-center gap-2 px-4 py-2 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg font-medium">
+				<span class="material-icons">bookmark</span>
+				<span>Guardado</span>
+			  </a>
+			</div>
+
+        </div>
+      </nav>
+    </div>
+	<div class="space-y-3">
+      <a href="ajustes.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg" href="#">
+        <span class="material-icons">settings</span>
+        <span>Ajustes</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 p-8 flex flex-col">
+    <header class="flex justify-end mb-8">
+      <a href="usuario.html" class="w-10 h-10 flex items-center justify-center bg-white dark:bg-zinc-800 rounded-full">
+        <span class="material-icons text-zinc-600 dark:text-zinc-400">person</span>
+      </a>
+    </header>
+
+    <div class="flex-1 flex flex-col items-center">
+      <div class="flex flex-col items-center mb-8 w-full max-w-3xl">
+        <h1 class="text-4xl font-bold text-zinc-800 dark:text-zinc-200 mb-4">Comunidad</h1>
+
+        <!-- Tabs centradas -->
+        <div class="flex justify-center items-center space-x-8 border-b border-zinc-200 dark:border-zinc-700 pb-3">
+          <a href="ComunidadParaTi.html" class="flex items-center gap-2 pb-3 border-b-2 border-transparent text-zinc-500 dark:text-zinc-400">
+            <span class="material-icons">thumb_up</span>
+            <span>Para ti</span>
+          </a>
+          <a href="ComunidadSiguiendo.html" class="flex items-center gap-2 pb-3 border-b-2 border-transparent text-zinc-500 dark:text-zinc-400">
+            <span class="material-icons">person_add</span>
+            <span>Siguiendo</span>
+          </a>
+          <a href="ComunidadTendencias.html" class="flex items-center gap-2 pb-3 border-b-2 border-transparent text-zinc-500 dark:text-zinc-400">
+            <span class="material-icons">trending_up</span>
+            <span>Tendencias</span>
+          </a>
+          <a href="#" class="flex items-center gap-2 pb-3 border-b-2 border-primary text-primary font-semibold cursor-pointer">
+            <span class="material-icons">search</span>
+            <span>Buscar</span>
+          </a>
+        </div>
+
+        <!-- Botones de selección con borde azul -->
+        <div class="flex justify-center gap-4 mt-4 mb-4">
+          <button id="btnUsuarios" class="px-4 py-2 rounded-lg border-2 border-blue-500 text-blue-500 font-medium hover:bg-blue-100/50">
+            Usuarios
+          </button>
+          <button id="btnTematica" class="px-4 py-2 rounded-lg border-2 border-blue-500 text-blue-500 font-medium hover:bg-blue-100/50">
+            Temática
+          </button>
+        </div>
+
+        <!-- Input de búsqueda -->
+        <div class="w-full">
+          <input type="text" id="searchInput" placeholder="Selecciona Usuarios o Temática primero" 
+            class="w-full px-4 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 disabled:opacity-50" 
+            disabled />
+        </div>
+      </div>
+
+      <!-- Resultados -->
+      <div id="results" class="flex-1 w-full max-w-3xl bg-white dark:bg-zinc-900 p-6 rounded-lg shadow-sm space-y-6 overflow-y-auto" style="max-height:500px;">
+        <div class="result-item p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg" data-type="Usuarios">
+          <span class="font-semibold">Usuario1</span> - Publicaciones recientes
+        </div>
+        <div class="result-item p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg" data-type="Temática">
+          <span class="font-semibold">Noticias de IA</span> - Resumen y debate
+        </div>
+        <div class="result-item p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg" data-type="Usuarios">
+          <span class="font-semibold">Usuario2</span> - Compartiendo tips
+        </div>
+        <div class="result-item p-4 bg-zinc-100 dark:bg-zinc-800 rounded-lg" data-type="Temática">
+          <span class="font-semibold">Tecnología y Futuro</span> - Conversaciones recientes
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script>
+  // Sidebar comunidad
+  const communityBtn = document.getElementById('communityBtn');
+  const communityMenu = document.getElementById('communityMenu');
+  const communityArrow = document.getElementById('communityArrow');
+  communityBtn.addEventListener('click', () => {
+    communityMenu.classList.toggle('hidden');
+    communityArrow.classList.toggle('rotate-90');
+  });
+
+  document.querySelectorAll('.community-submenu').forEach(link => {
+    link.addEventListener('click', (e) => {
+      document.querySelectorAll('.community-submenu').forEach(l => {
+        l.classList.remove('text-primary', 'font-semibold');
+        l.classList.add('text-zinc-600', 'dark:text-zinc-400');
+      });
+      e.currentTarget.classList.add('text-primary', 'font-semibold');
+      e.currentTarget.classList.remove('text-zinc-600', 'dark:text-zinc-400');
+    });
+  });
+
+  // Botones selección
+  let searchMode = null;
+  const btnUsuarios = document.getElementById('btnUsuarios');
+  const btnTematica = document.getElementById('btnTematica');
+  const searchInput = document.getElementById('searchInput');
+  const results = Array.from(document.querySelectorAll('.result-item'));
+
+  function activateButton(selectedBtn, otherBtn) {
+    searchMode = selectedBtn.textContent.trim();
+    searchInput.disabled = false;
+    searchInput.placeholder = "Buscar " + searchMode + "...";
+    searchInput.value = "";
+    results.forEach(r => r.style.display = 'none');
+
+    selectedBtn.classList.remove('bg-white', 'text-blue-500', 'hover:bg-blue-100/50');
+    selectedBtn.classList.add('bg-blue-500', 'text-white');
+    otherBtn.classList.remove('bg-blue-500', 'text-white');
+    otherBtn.classList.add('bg-white', 'text-blue-500', 'hover:bg-blue-100/50');
+  }
+
+  btnUsuarios.addEventListener('click', () => activateButton(btnUsuarios, btnTematica));
+  btnTematica.addEventListener('click', () => activateButton(btnTematica, btnUsuarios));
+
+  // Inicialmente ocultar todos los resultados
+results.forEach(r => r.style.display = 'none');
+
+function activateButton(selectedBtn, otherBtn) {
+  searchMode = selectedBtn.textContent.trim();
+  searchInput.disabled = false;
+  searchInput.placeholder = "Buscar " + searchMode + "...";
+  searchInput.value = "";
+  // Mantener resultados ocultos hasta que el usuario escriba algo
+  results.forEach(r => r.style.display = 'none');
+
+  selectedBtn.classList.remove('bg-white', 'text-blue-500', 'hover:bg-blue-100/50');
+  selectedBtn.classList.add('bg-blue-500', 'text-white');
+  otherBtn.classList.remove('bg-blue-500', 'text-white');
+  otherBtn.classList.add('bg-white', 'text-blue-500', 'hover:bg-blue-100/50');
+}
+
+// Búsqueda dinámica
+searchInput.addEventListener('input', () => {
+  const query = searchInput.value.toLowerCase().trim();
+  results.forEach(item => {
+    const text = item.textContent.toLowerCase();
+    const type = item.dataset.type;
+    let show = false;
+    if(query) { // Solo mostrar si hay texto
+      if(searchMode === 'Usuarios') show = type === 'Usuarios' && text.includes(query);
+      if(searchMode === 'Temática') show = type === 'Temática' && text.includes(query);
+    }
+    item.style.display = show ? 'block' : 'none';
+  });
+});
+
+</script>
+</body>
+</html>

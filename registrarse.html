@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Registrarse</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#3b82f6",
+          "background-light": "#f4f4f5",
+          "background-dark": "#18181b",
+        },
+        fontFamily: { display: ["Poppins", "sans-serif"] },
+      },
+    },
+  };
+</script>
+<style>
+  .material-icons { font-size: 24px; line-height: 1; }
+  .error-text { color: #dc2626; font-size: 0.875rem; margin-top: 0.25rem; }
+</style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-zinc-900 dark:text-zinc-100">
+
+<div class="flex items-center justify-center min-h-screen">
+  <div class="w-full max-w-md p-8 bg-white dark:bg-zinc-900 rounded-xl shadow-lg">
+    <div class="flex flex-col items-center mb-6">
+      <img src="logo.png" alt="Logo" class="w-20 h-20 mb-4"/>
+      <h1 class="text-3xl font-bold text-zinc-800 dark:text-zinc-200 mb-2">Registrarse</h1>
+      <p class="text-zinc-500 dark:text-zinc-400">Crea tu cuenta para comenzar</p>
+    </div>
+
+    <form id="registerForm" class="space-y-4">
+      <div>
+        <input type="text" id="nombre" placeholder="Nombre" class="w-full px-4 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100"/>
+        <div id="errorNombre" class="error-text hidden">Debe ingresar su nombre.</div>
+      </div>
+
+      <div>
+        <input type="text" id="apellidos" placeholder="Apellidos" class="w-full px-4 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100"/>
+        <div id="errorApellidos" class="error-text hidden">Debe ingresar sus apellidos.</div>
+      </div>
+
+      <div>
+        <input type="email" id="correo" placeholder="Correo" class="w-full px-4 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100"/>
+        <div id="errorCorreo" class="error-text hidden">Correo inválido.</div>
+      </div>
+
+      <div>
+        <input type="text" id="usuario" placeholder="Nombre de usuario" class="w-full px-4 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100"/>
+        <div id="errorUsuario" class="error-text hidden">Debe ingresar un nombre de usuario.</div>
+      </div>
+
+      <div>
+        <input type="password" id="password" placeholder="Contraseña" class="w-full px-4 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100"/>
+        <div id="errorPassword" class="error-text hidden">Debe ingresar una contraseña.</div>
+      </div>
+
+      <div>
+        <input type="password" id="confirmPassword" placeholder="Confirmar contraseña" class="w-full px-4 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-primary bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100"/>
+        <div id="errorConfirmPassword" class="error-text hidden">Las contraseñas no coinciden.</div>
+      </div>
+
+      <div>
+        <select id="rol" class="w-full px-4 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700 focus:outline-none focus:ring-2 focus:ring-primary">
+          <option value="estandar" selected>Estándar</option>
+          <option value="premium">Premium</option>
+        </select>
+      </div>
+
+      <button type="submit" class="w-full bg-primary text-white py-2 rounded-lg hover:bg-blue-600 transition-colors">Registrarse</button>
+    </form>
+
+    <div class="flex justify-between mt-4">
+      <a href="index.html" class="text-zinc-500 dark:text-zinc-400 hover:underline flex items-center gap-1">
+        <span class="material-icons text-sm">arrow_back</span> Volver
+      </a>
+      <a href="iniciosesion.html" class="text-primary font-semibold hover:underline">¿Ya tienes cuenta? Inicia sesión</a>
+    </div>
+  </div>
+</div>
+
+<script>
+const registerForm = document.getElementById('registerForm');
+const nombre = document.getElementById('nombre');
+const apellidos = document.getElementById('apellidos');
+const correo = document.getElementById('correo');
+const usuario = document.getElementById('usuario');
+const password = document.getElementById('password');
+const confirmPassword = document.getElementById('confirmPassword');
+
+registerForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  let valid = true;
+
+  if(!nombre.value.trim()){document.getElementById('errorNombre').classList.remove('hidden'); valid=false;} else {document.getElementById('errorNombre').classList.add('hidden');}
+  if(!apellidos.value.trim()){document.getElementById('errorApellidos').classList.remove('hidden'); valid=false;} else {document.getElementById('errorApellidos').classList.add('hidden');}
+  if(!correo.value.trim() || !/\S+@\S+\.\S+/.test(correo.value)){document.getElementById('errorCorreo').classList.remove('hidden'); valid=false;} else {document.getElementById('errorCorreo').classList.add('hidden');}
+  if(!usuario.value.trim()){document.getElementById('errorUsuario').classList.remove('hidden'); valid=false;} else {document.getElementById('errorUsuario').classList.add('hidden');}
+  if(!password.value.trim()){document.getElementById('errorPassword').classList.remove('hidden'); valid=false;} else {document.getElementById('errorPassword').classList.add('hidden');}
+  if(password.value !== confirmPassword.value){document.getElementById('errorConfirmPassword').classList.remove('hidden'); valid=false;} else {document.getElementById('errorConfirmPassword').classList.add('hidden');}
+
+  if(valid){
+    window.location.href = "AnalisisVeracidadTexto.html";
+  }
+});
+</script>
+
+</body>
+</html>

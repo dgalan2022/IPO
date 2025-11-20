@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ajustes - IAversiesverdad</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#3b82f6",
+          secondary: "#f59e0b",
+          background: "#f4f4f5",
+          "background-dark": "#18181b",
+        },
+        fontFamily: { display: ["Poppins", "sans-serif"] },
+      },
+    },
+  };
+</script>
+
+<style>
+  .material-icons { font-size: 24px; line-height: 1; }
+
+  /* CUADRO FIJO QUE NO SE REDIMENSIONA */
+  #previewBox {
+      width: 100%;
+      max-width: 650px;
+      height: 350px;
+      border: 3px solid #3b82f6;
+      border-radius: 16px;
+
+      padding: 20px;
+      overflow: auto;
+      box-sizing: border-box;
+
+      /* Esto evita que el cuadro cambie de tamaño o afecte el layout */
+      flex-shrink: 0;
+      flex-grow: 0;
+      flex-basis: 350px;
+
+      background: white;
+      color: #111827;
+
+      display: block !important;
+  }
+  .dark #previewBox {
+      background: #1e1e1e;
+      color: #fafafa;
+  }
+
+</style>
+
+</head>
+
+<body class="font-display bg-background dark:bg-background-dark text-zinc-900 dark:text-zinc-100">
+
+<div class="flex flex-col min-h-screen">
+
+  <!-- HEADER -->
+  <header class="flex items-center justify-between px-6 py-4 bg-white dark:bg-zinc-900 shadow">
+    <div class="flex items-center gap-3">
+      <img src="logo.png" alt="Logo" class="w-10 h-10"/>
+      <h1 class="text-xl font-bold text-zinc-800 dark:text-zinc-200">Ajustes</h1>
+    </div>
+    <button onclick="history.back()" class="text-primary font-semibold hover:underline flex items-center gap-1">
+      <span class="material-icons text-sm">arrow_back</span> Volver
+    </button>
+  </header>
+
+  <main class="flex-1 p-6 max-w-4xl mx-auto space-y-8">
+    
+    <!-- Tema -->
+    <section class="space-y-2">
+      <h2 class="text-lg font-semibold text-zinc-800 dark:text-zinc-200">Tema</h2>
+      <div class="flex gap-4">
+        <label class="flex items-center gap-2">
+          <input type="radio" name="tema" value="claro">
+          Claro
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="radio" name="tema" value="oscuro">
+          Oscuro
+        </label>
+        <label class="flex items-center gap-2">
+          <input type="radio" name="tema" value="auto">
+          Automático
+        </label>
+      </div>
+    </section>
+
+    <!-- Accesibilidad -->
+    <section class="space-y-2">
+      <h2 class="text-lg font-semibold text-zinc-800 dark:text-zinc-200">Accesibilidad</h2>
+      <label class="flex items-center gap-2">
+        <input type="checkbox" id="daltonico">
+        Modo Daltonismo
+      </label>
+      <label class="flex items-center gap-2">
+        <input type="checkbox" id="dictado">
+        Activar Modo Dictado (simulación)
+      </label>
+    </section>
+
+    <!-- Tipografía + EJEMPLO -->
+    <section class="space-y-2">
+      <h2 class="text-lg font-semibold text-zinc-800 dark:text-zinc-200">Tipografía</h2>
+
+      <div class="flex flex-col gap-2">
+        <label>
+          Fuente:
+          <select id="fuente" class="w-full px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700">
+            <option value="Poppins">Poppins</option>
+            <option value="Arial">Arial</option>
+            <option value="Times New Roman">Times New Roman</option>
+            <option value="Verdana">Verdana</option>
+          </select>
+        </label>
+
+        <label>
+          Tamaño de fuente:
+          <input type="range" id="tamanoFuente" min="12" max="40" value="16" class="w-full"/>
+        </label>
+      </div>
+
+      <!-- CUADRO FIJO DE PREVISUALIZACIÓN -->
+      <div id="previewBox" class="mt-3">
+        <p id="previewText">
+          Texto de ejemplo. Aquí verás los cambios de fuente y tamaño sin que el resto de la página se mueva.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- Idioma -->
+    <section class="space-y-2">
+      <h2 class="text-lg font-semibold text-zinc-800 dark:text-zinc-200">Idioma</h2>
+      <select id="idioma" class="w-full px-3 py-2 rounded-lg border border-zinc-300 dark:border-zinc-700">
+        <option value="es">Español</option>
+        <option value="en">Inglés</option>
+        <option value="fr">Francés</option>
+        <option value="de">Alemán</option>
+      </select>
+    </section>
+
+    <!-- Notificaciones -->
+    <section class="space-y-2">
+      <h2 class="text-lg font-semibold text-zinc-800 dark:text-zinc-200">Notificaciones</h2>
+      <label class="flex items-center gap-2">
+        <input type="checkbox" id="notificaciones">
+        Activar notificaciones
+      </label>
+    </section>
+
+    <!-- Privacidad -->
+    <section class="space-y-2">
+      <h2 class="text-lg font-semibold text-zinc-800 dark:text-zinc-200">Privacidad y permisos</h2>
+      <label class="flex items-center gap-2">
+        <input type="checkbox" id="localizacion">
+        Permitir acceso a ubicación
+      </label>
+      <label class="flex items-center gap-2">
+        <input type="checkbox" id="camara">
+        Permitir acceso a cámara
+      </label>
+      <label class="flex items-center gap-2">
+        <input type="checkbox" id="microfono">
+        Permitir acceso a micrófono
+      </label>
+    </section>
+
+    <!-- Guardar -->
+    <section>
+      <button id="guardar" class="bg-primary text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors">Guardar cambios</button>
+    </section>
+
+  </main>
+</div>
+
+<script>
+// -------------------------------
+// CARGA CONFIGURACIÓN GUARDADA
+// -------------------------------
+window.addEventListener('DOMContentLoaded', ()=>{
+
+  const config = JSON.parse(localStorage.getItem('ajustes')) || {};
+
+  // Tema
+  if(config.tema){
+    const radio = document.querySelector(`input[name="tema"][value="${config.tema}"]`);
+    if(radio) radio.checked = true;
+    aplicarTema(config.tema);
+  }
+
+  // Daltonismo
+  if(config.daltonico) document.getElementById('daltonico').checked = true;
+  aplicarDaltonico(config.daltonico);
+
+  // Fuente
+  if(config.fuente) document.getElementById('fuente').value = config.fuente;
+  document.getElementById("previewText").style.fontFamily = config.fuente || "Poppins";
+
+  // Tamaño
+  if(config.tamano) document.getElementById('tamanoFuente').value = config.tamano;
+  document.getElementById("previewText").style.fontSize = (config.tamano || 16) + "px";
+
+  // Otros
+  if(config.dictado) document.getElementById('dictado').checked = true;
+  if(config.idioma) document.getElementById('idioma').value = config.idioma;
+  if(config.notificaciones) document.getElementById('notificaciones').checked = true;
+  if(config.localizacion) document.getElementById('localizacion').checked = true;
+  if(config.camara) document.getElementById('camara').checked = true;
+  if(config.microfono) document.getElementById('microfono').checked = true;
+
+});
+
+// -------------------------------
+// FUNCIONES APLICAR CAMBIOS
+// -------------------------------
+function aplicarTema(tema){
+  if(tema === 'claro') document.documentElement.classList.remove('dark');
+  else if(tema === 'oscuro') document.documentElement.classList.add('dark');
+  else if(tema === 'auto'){
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    prefersDark ? document.documentElement.classList.add('dark') : document.documentElement.classList.remove('dark');
+  }
+}
+
+function aplicarDaltonico(activo){
+  document.documentElement.style.filter = activo ? "grayscale(100%)" : "none";
+}
+
+// -------------------------------
+// PREVISUALIZACIÓN
+// -------------------------------
+const fuenteSelect = document.getElementById("fuente");
+const tamanoRange  = document.getElementById("tamanoFuente");
+const previewText  = document.getElementById("previewText");
+
+// Cambia SOLO el texto del cuadro
+fuenteSelect.addEventListener("input", () => {
+  previewText.style.fontFamily = fuenteSelect.value;
+});
+
+tamanoRange.addEventListener("input", () => {
+  previewText.style.fontSize = tamanoRange.value + "px";
+});
+
+// -------------------------------
+// GUARDAR CONFIGURACIÓN
+// -------------------------------
+document.getElementById('guardar').addEventListener('click', ()=>{
+
+  const ajustes = {
+    tema: document.querySelector('input[name="tema"]:checked')?.value || 'claro',
+    daltonico: document.getElementById('daltonico').checked,
+    dictado: document.getElementById('dictado').checked,
+    fuente: fuenteSelect.value,
+    tamano: tamanoRange.value,
+    idioma: document.getElementById('idioma').value,
+    notificaciones: document.getElementById('notificaciones').checked,
+    localizacion: document.getElementById('localizacion').checked,
+    camara: document.getElementById('camara').checked,
+    microfono: document.getElementById('microfono').checked,
+  };
+
+  localStorage.setItem('ajustes', JSON.stringify(ajustes));
+
+  // Aplicar tema y daltonico global
+  aplicarTema(ajustes.tema);
+  aplicarDaltonico(ajustes.daltonico);
+
+  // Mensaje visual
+  const mensaje = document.createElement('div');
+  mensaje.textContent = "Configuración guardada correctamente";
+  mensaje.className = "bg-green-100 dark:bg-green-800 text-green-800 dark:text-green-100 px-4 py-2 rounded-lg mb-4 text-center";
+  document.querySelector('main').prepend(mensaje);
+  setTimeout(()=>mensaje.remove(),3000);
+});
+</script>
+
+</body>
+</html>

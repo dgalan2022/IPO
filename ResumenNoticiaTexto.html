@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Resumen de Noticia</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#3b82f6",
+          "background-light": "#f4f4f5",
+          "background-dark": "#18181b",
+        },
+        fontFamily: { display: ["Poppins","sans-serif"] },
+      },
+    },
+  };
+</script>
+<style>
+  .material-icons { font-size: 24px; line-height: 1; }
+</style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-zinc-900 dark:text-zinc-100">
+
+<div class="flex h-screen">
+
+  <!-- SIDEBAR -->
+  <aside class="w-64 p-6 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center gap-3 mb-10">
+        <img src="logo.png" class="w-10 h-10 object-contain" alt="Logo">
+        <span class="text-lg font-bold text-zinc-800 dark:text-zinc-200">IAversiesverdad</span>
+      </div>
+
+      <nav class="space-y-3">
+        <a href="AnalisisVeracidadTexto.html"
+           class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg">
+          <span class="material-icons">search</span>
+          <span>Análisis de Veracidad</span>
+        </a>
+        <!-- Resumen de Noticia ACTIVO -->
+        <a href="ResumenNoticiaTexto.html"
+           class="flex items-center gap-4 px-4 py-3 bg-primary/10 text-primary rounded-lg font-semibold">
+          <span class="material-icons">description</span>
+          <span>Resumen de Noticia</span>
+        </a>
+        <a href="Chatbot.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg" href="#">
+          <span class="material-icons">forum</span>
+          <span>Chatbot IA</span>
+        </a>
+        <a href="ComunidadParaTi.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg" href="#">
+          <span class="material-icons">people</span>
+          <span class="flex-grow">Comunidad</span>
+          <span class="material-icons text-sm">arrow_forward_ios</span>
+        </a>
+      </nav>
+    </div>
+    <div class="space-y-3">
+      <a href="ajustes.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg" href="#">
+        <span class="material-icons">settings</span>
+        <span>Ajustes</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 p-8 flex flex-col">
+    <header class="flex justify-end mb-8">
+      <a href="usuario.html" class="w-10 h-10 flex items-center justify-center bg-white dark:bg-zinc-800 rounded-full">
+        <span class="material-icons text-zinc-600 dark:text-zinc-400">person</span>
+      </a>
+    </header>
+
+    <div class="flex-1 flex flex-col items-center">
+      <div class="flex flex-col items-center mb-8">
+        <h1 class="text-4xl font-bold text-zinc-800 dark:text-zinc-200 mb-4">Resumen de Noticia</h1>
+
+        <div class="flex items-center space-x-8 border-b border-zinc-200 dark:border-zinc-700 pb-3">
+          <!-- Texto ACTIVO -->
+          <a href="ResumenNoticiaTexto.html"
+             class="flex items-center gap-2 pb-3 border-b-2 border-primary text-primary font-semibold">
+            <span class="material-icons">edit</span>
+            <span>Texto</span>
+          </a>
+          <a href="ResumenNoticiaURL.html"
+             class="flex items-center gap-2 pb-3 border-b-2 border-transparent text-zinc-500 dark:text-zinc-400">
+            <span class="material-icons">link</span>
+            <span>URL</span>
+          </a>
+          <a href="ResumenNoticiaPDF.html"
+             class="flex items-center gap-2 pb-3 border-b-2 border-transparent text-zinc-500 dark:text-zinc-400">
+            <span class="material-icons">picture_as_pdf</span>
+            <span>PDF</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="flex-1 flex flex-col bg-white dark:bg-zinc-900 p-6 rounded-lg shadow-sm w-full max-w-3xl">
+        <textarea class="w-full flex-1 bg-transparent border-none focus:ring-0 resize-none text-zinc-700 dark:text-zinc-300 placeholder:text-zinc-400 dark:placeholder:text-zinc-500 p-2" placeholder="Escribe aquí la noticia y nuestra IA resumirá la noticia que mas se ajusta..."></textarea>
+      </div>
+
+      <div class="flex justify-center mt-8">
+        <a href="ResumenNoticiaResultado.html">
+          <button class="bg-primary text-white font-semibold py-3 px-10 rounded-full hover:bg-blue-600 transition-colors shadow-md">
+            Resumir
+          </button>
+        </a>
+      </div>
+    </div>
+  </main>
+
+</div>
+</body>
+</html>

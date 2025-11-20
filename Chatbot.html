@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Chatbot IA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#3b82f6",
+          "background-light": "#f4f4f5",
+          "background-dark": "#18181b",
+        },
+        fontFamily: { display: ["Poppins","sans-serif"] },
+      },
+    },
+  };
+</script>
+<style>
+  .material-icons { font-size: 24px; line-height: 1; }
+  .scrollbar-thin::-webkit-scrollbar { width: 6px; }
+  .scrollbar-thin::-webkit-scrollbar-thumb { background-color: rgba(100,100,100,0.3); border-radius: 3px; }
+  .scrollbar-thin { scrollbar-width: thin; scrollbar-color: rgba(100,100,100,0.3) transparent; }
+</style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-zinc-900 dark:text-zinc-100">
+
+<div class="flex h-screen">
+
+  <!-- SIDEBAR -->
+  <aside class="w-64 p-6 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center gap-3 mb-10">
+        <img src="logo.png" class="w-10 h-10 object-contain" alt="Logo">
+        <span class="text-lg font-bold text-zinc-800 dark:text-zinc-200">IAversiesverdad</span>
+      </div>
+
+      <nav class="space-y-3">
+        <a href="AnalisisVeracidadTexto.html"
+           class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg">
+          <span class="material-icons">search</span>
+          <span>Análisis de Veracidad</span>
+        </a>
+        <a href="ResumenNoticiaTexto.html"
+           class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg">
+          <span class="material-icons">description</span>
+          <span>Resumen de Noticia</span>
+        </a>
+        <!-- Chatbot IA ACTIVO -->
+        <a href="Chatbot.html" class="flex items-center gap-4 px-4 py-3 bg-primary/10 text-primary rounded-lg font-semibold" href="#">
+          <span class="material-icons">forum</span>
+          <span>Chatbot IA</span>
+        </a>
+        <a href="ComunidadParaTi.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg" href="#">
+          <span class="material-icons">people</span>
+          <span class="flex-grow">Comunidad</span>
+          <span class="material-icons text-sm">arrow_forward_ios</span>
+        </a>
+      </nav>
+    </div>
+    <div class="space-y-3">
+      <a href="ajustes.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg" href="#">
+        <span class="material-icons">settings</span>
+        <span>Ajustes</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 p-8 flex flex-col">
+    <header class="flex justify-end mb-8">
+      <a href="usuario.html" class="w-10 h-10 flex items-center justify-center bg-white dark:bg-zinc-800 rounded-full">
+        <span class="material-icons text-zinc-600 dark:text-zinc-400">person</span>
+      </a>
+    </header>
+
+    <div class="flex-1 flex flex-col items-center">
+      <div class="flex flex-col items-center mb-8">
+	  <h1 class="text-4xl font-bold text-zinc-800 dark:text-zinc-200 mb-4">Chatbot IA</h1>
+
+	  <div class="flex items-center space-x-8 border-b border-zinc-200 dark:border-zinc-700 pb-3">
+		<!-- Nuevo Chat ACTIVO -->
+		<div class="flex justify-center">
+		  <a href="Chatbot.html" class="bg-primary text-white font-semibold py-2 px-6 rounded-full hover:bg-blue-600 transition-colors shadow-md flex items-center gap-2">
+              <span class="material-icons text-base">add</span>
+			Nuevo Chat
+		  </a>
+		</div>
+
+		<!-- Historial -->
+		<a href="ChatbotHistorial.html"
+		   class="flex items-center gap-2 pb-3 border-b-2 border-transparent text-zinc-500 dark:text-zinc-400">
+		  <span class="material-icons">history</span>
+		  <span>Historial</span>
+		</a>
+		<!-- Buscar chats -->
+		<a href="ChatbotBuscar.html"
+		   class="flex items-center gap-2 pb-3 border-b-2 border-transparent text-zinc-500 dark:text-zinc-400">
+		  <span class="material-icons">search</span>
+		  <span>Buscar chats</span>
+		</a>
+	  </div>
+	</div>
+
+
+
+      <div class="flex-1 flex flex-col bg-white dark:bg-zinc-900 rounded-lg shadow-sm w-full max-w-3xl p-4 mb-4">
+		  <!-- Chat terminal -->
+		  <div id="chatContainer" class="flex-1 overflow-y-auto scrollbar-thin flex flex-col gap-4 mb-4" style="min-height:300px; max-height:500px;">
+			<!-- Mensajes se agregarán aquí -->
+		  </div>
+
+		  <!-- Barra de escribir dentro del cuadro -->
+		  <div class="flex items-center gap-2 mt-2">
+			<!-- Adjuntar archivos -->
+			<input type="file" id="inputFile" class="hidden" multiple>
+			<button id="btnAdjuntar" class="flex items-center justify-center w-10 h-10 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors">
+			  <span class="material-icons text-base">attach_file</span>
+			</button>
+
+			<script>
+			const btnAdjuntar = document.getElementById('btnAdjuntar');
+			const inputFile = document.getElementById('inputFile');
+
+			btnAdjuntar.addEventListener('click', () => {
+			  // Disparar el input file oculto
+			  inputFile.click();
+			});
+
+			inputFile.addEventListener('change', (event) => {
+			  const files = Array.from(event.target.files);
+			  if(files.length){
+				console.log('Archivos seleccionados:', files.map(f => f.name).join(', '));
+				// Aquí puedes mostrar los archivos en el chat
+			  }
+			});
+			</script>
+
+
+			<!-- Input de texto -->
+			<input id="inputChat" type="text" placeholder="Pregunta lo que quieras..."
+				   class="flex-1 bg-transparent border border-zinc-300 dark:border-zinc-600 rounded-full px-4 py-3 focus:outline-none focus:ring-2 focus:ring-primary">
+
+			<!-- Botón enviar -->
+		<div class="flex justify-center">
+		  <button id="btnEnviar" disabled
+				  class="bg-primary text-white font-semibold py-3 px-6 rounded-full hover:bg-blue-600 transition-colors shadow-md flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed">
+			<span class="material-icons text-base">send</span>
+			Enviar
+		  </button>
+		</div>
+
+		<script>
+		const btnEnviar = document.getElementById('btnEnviar');
+		const inputChat = document.getElementById('inputChat');
+		const chatContainer = document.getElementById('chatContainer');
+
+		// Activar/desactivar según si hay texto
+		inputChat.addEventListener('input', () => {
+		  btnEnviar.disabled = inputChat.value.trim() === '';
+		});
+
+		// Función para agregar mensaje
+		function agregarMensaje(usuario, texto){
+		  const div = document.createElement('div');
+		  div.className = usuario
+			? 'self-end bg-primary text-white px-4 py-2 rounded-2xl max-w-xs break-words'
+			: 'self-start bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 px-4 py-2 rounded-2xl max-w-xs break-words';
+		  div.textContent = texto;
+		  chatContainer.appendChild(div);
+		  chatContainer.scrollTop = chatContainer.scrollHeight;
+		}
+
+		// Función para simular respuesta IA
+		function responderIA(texto){
+		  setTimeout(() => {
+			agregarMensaje(false, 'Respuesta de IA a: ' + texto);
+		  }, 800);
+		}
+
+		// Enviar mensaje
+		btnEnviar.addEventListener('click', () => {
+		  const texto = inputChat.value.trim();
+		  if(!texto) return; // por seguridad
+		  agregarMensaje(true, texto);
+		  inputChat.value = '';
+		  btnEnviar.disabled = true; // vuelve a deshabilitar
+		  responderIA(texto);
+		});
+		</script>
+
+
+		<style>
+		/* Scrollbar personalizada */
+		.scrollbar-thin::-webkit-scrollbar { width: 6px; }
+		.scrollbar-thin::-webkit-scrollbar-thumb { background-color: rgba(100,100,100,0.3); border-radius: 3px; }
+		.scrollbar-thin { scrollbar-width: thin; scrollbar-color: rgba(100,100,100,0.3) transparent; }
+		</style>
+
+
+		<script>
+		const chatContainer = document.getElementById('chatContainer');
+		const inputChat = document.getElementById('inputChat');
+		const btnEnviar = document.getElementById('btnEnviar');
+		const btnNuevoChat = document.getElementById('btnNuevoChat');
+		const btnAdjuntar = document.getElementById('btnAdjuntar');
+
+		function agregarMensaje(usuario, texto){
+		  const div = document.createElement('div');
+		  div.className = usuario
+			? 'self-end bg-primary text-white px-4 py-2 rounded-2xl max-w-xs break-words'
+			: 'self-start bg-zinc-100 dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 px-4 py-2 rounded-2xl max-w-xs break-words';
+		  div.textContent = texto;
+		  chatContainer.appendChild(div);
+		  chatContainer.scrollTop = chatContainer.scrollHeight;
+		}
+
+		function responderIA(texto){
+		  setTimeout(() => {
+			agregarMensaje(false, 'Respuesta de IA a: ' + texto);
+		  }, 800);
+		}
+
+		// Enviar mensaje
+		btnEnviar.addEventListener('click', () => {
+		  const texto = inputChat.value.trim();
+		  if(!texto) return;
+		  agregarMensaje(true, texto);
+		  inputChat.value = '';
+		  btnEnviar.innerHTML = '<span class="material-icons text-base">send</span> Enviar';
+		  responderIA(texto);
+		});
+
+		// Cambiar texto del botón según input
+		inputChat.addEventListener('input', () => {
+		  btnEnviar.innerHTML = inputChat.value.trim()
+			? '<span class="material-icons text-base">send</span> Enviar'
+			: '<span class="material-icons text-base">send</span> Enviar';
+		});
+
+		// Nuevo chat limpia el contenedor
+		btnNuevoChat.addEventListener('click', () => {
+		  chatContainer.innerHTML = '';
+		});
+
+		// Adjuntar archivos (simple simulación)
+		btnAdjuntar.addEventListener('click', () => {
+		  alert('Función de adjuntar archivos aún no implementada');
+		});
+		</script>
+</div>
+</main>
+</div>
+</div>
+</body>
+</html>

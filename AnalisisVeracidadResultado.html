@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Análisis de Veracidad - Texto</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#3b82f6",
+          "background-light": "#f4f4f5",
+          "background-dark": "#18181b",
+        },
+        fontFamily: { display: ["Poppins","sans-serif"] },
+      },
+    },
+  };
+</script>
+<style>
+  .material-icons { font-size: 24px; line-height: 1; }
+</style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-zinc-900 dark:text-zinc-100">
+
+<div class="flex h-screen">
+
+  <!-- SIDEBAR -->
+  <aside class="w-64 p-6 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center gap-3 mb-10">
+        <img src="logo.png" class="w-10 h-10 object-contain" alt="Logo">
+        <span class="text-lg font-bold text-zinc-800 dark:text-zinc-200">IAversiesverdad</span>
+      </div>
+      <nav class="space-y-3">
+        <a href="AnalisisVeracidadTexto.html"
+           class="flex items-center gap-4 px-4 py-3 bg-primary/10 text-primary rounded-lg font-semibold">
+          <span class="material-icons">search</span>
+          <span>Análisis de Veracidad</span>
+        </a>
+        <a href="ResumenNoticiaTexto.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg" href="#">
+          <span class="material-icons">description</span>
+          <span>Resumen de Noticia</span>
+        </a>
+        <a href="Chatbot.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg" href="#">
+          <span class="material-icons">forum</span>
+          <span>Chatbot IA</span>
+        </a>
+        <a href="ComunidadParaTi.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg" href="#">
+          <span class="material-icons">people</span>
+          <span class="flex-grow">Comunidad</span>
+          <span class="material-icons text-sm">arrow_forward_ios</span>
+        </a>
+      </nav>
+    </div>
+    <div class="space-y-3">
+      <a href="ajustes.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg" href="#">
+        <span class="material-icons">settings</span>
+        <span>Ajustes</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 p-8 flex flex-col">
+    <header class="flex justify-end mb-8">
+      <a href="usuario.html" class="w-10 h-10 flex items-center justify-center bg-white dark:bg-zinc-800 rounded-full">
+        <span class="material-icons text-zinc-600 dark:text-zinc-400">person</span>
+      </a>
+    </header>
+
+    <div class="flex-1 flex flex-col items-center">
+      <div class="flex flex-col items-center mb-8">
+        <h1 class="text-4xl font-bold text-zinc-800 dark:text-zinc-200 mb-4">Análisis de Veracidad</h1>
+      </div>
+
+      <!-- RESULTADO -->
+      <div class="flex-1 flex flex-col bg-white dark:bg-zinc-900 p-6 rounded-lg shadow-sm w-full max-w-3xl space-y-6">
+
+        <!-- Datos de noticia -->
+        <div class="text-zinc-700 dark:text-zinc-300 space-y-2">
+          <p><span class="font-medium">Título:</span> Paz en Gaza</p>
+          <p><span class="font-medium">Autor:</span> Pepe Gonzalez</p>
+          <p><span class="font-medium">Fecha publicación:</span> 17 nov 2025</p>
+        </div>
+
+        <!-- Incoherencias con scroll -->
+		<div class="border border-zinc-200 dark:border-zinc-700 rounded-lg max-h-64 overflow-y-auto p-4">
+		  <!-- Incoherencias semánticas -->
+		  <div class="flex justify-between items-center mb-4">
+			<h3 class="text-lg font-semibold text-zinc-800 dark:text-zinc-200">Incoherencias semánticas y lingüísticas:</h3>
+			<button class="copy-btn flex items-center gap-2 px-4 py-2 rounded-full border border-zinc-300 dark:border-zinc-600 text-sm font-medium text-primary hover:bg-primary/10 transition-colors">
+			  <span class="material-icons text-base">content_copy</span>
+			  Copiar
+			</button>
+		  </div>
+		  <div class="space-y-3 text-zinc-600 dark:text-zinc-400 mb-6" id="incoherencias-text">
+			<p>La reciente declaración de paz en Gaza ha sido recibida con cautela por la comunidad internacional. Aunque se han firmado acuerdos entre las principales facciones, persisten tensiones locales que podrían afectar su implementación.</p>
+			<p>Algunos líderes expresan optimismo sobre la reducción de los conflictos armados, mientras que otros advierten sobre posibles incumplimientos y problemas logísticos en la distribución de ayuda humanitaria.</p>
+			<p>Analistas lingüísticos han señalado que ciertos comunicados oficiales contienen incoherencias y términos ambiguos que podrían interpretarse de manera distinta según el contexto político.</p>
+		  </div>
+
+		  <!-- Antónimos detectados -->
+		  <div class="flex justify-between items-center mb-4">
+			<h3 class="text-lg font-semibold text-zinc-800 dark:text-zinc-200">Antónimos detectados:</h3>
+		  </div>
+		  <div class="space-y-3 text-zinc-600 dark:text-zinc-400" id="antonimos-text">
+			<p>En el análisis se han identificado palabras opuestas dentro de la misma noticia, como “optimismo” y “cautela”, “reducción” y “problemas”, que generan contradicciones semánticas.</p>
+		  </div>
+		</div>
+
+		<!-- SCRIPT PARA COPIAR -->
+		<script>
+		  document.querySelectorAll('.copy-btn').forEach(button => {
+			button.addEventListener('click', () => {
+			  // Determinar el contenedor de texto asociado
+			  let container = button.nextElementSibling || button.previousElementSibling;
+			  if(container){
+				const text = container.innerText;
+				navigator.clipboard.writeText(text).then(() => {
+				  const original = button.innerHTML;
+				  button.innerHTML = '✅ Copiado';
+				  setTimeout(() => button.innerHTML = original, 2000);
+				});
+			  }
+			});
+		  });
+		</script>
+
+
+
+
+
+        <!-- Fuentes y confiabilidad -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-zinc-50 dark:bg-zinc-800 p-4 rounded-lg border border-zinc-200 dark:border-zinc-700">
+            <h3 class="text-lg font-semibold mb-3 text-zinc-800 dark:text-zinc-200">Fuentes consultadas</h3>
+            <ul class="space-y-2 text-primary">
+              <li><a class="hover:underline" href="#">https://elpaissl.com/paz-en-gaza</a></li>
+              <li><a class="hover:underline" href="#">https://elmundo.es/paz-en-gaza</a></li>
+              <li class="text-zinc-500 dark:text-zinc-400">BASE DE DATOS BDBYEXPERIENCE</li>
+            </ul>
+          </div>
+          <div class="bg-zinc-50 dark:bg-zinc-800 p-4 rounded-lg border border-zinc-200 dark:border-zinc-700">
+            <h3 class="text-lg font-semibold mb-3 text-zinc-800 dark:text-zinc-200">Nivel de Confiabilidad</h3>
+            <div class="flex items-center gap-6">
+              <div class="space-y-2">
+                <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-red-500"></div><span class="text-sm">Bajo</span></div>
+                <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-yellow-500"></div><span class="text-sm">Medio</span></div>
+                <div class="flex items-center gap-2"><div class="w-3 h-3 rounded-full bg-green-500"></div><span class="text-sm">Alto</span></div>
+              </div>
+              <div class="text-6xl font-bold text-red-500">35<span class="text-5xl">%</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Botones azul -->
+        <div class="flex justify-center gap-4 mt-4">
+          <button class="relative group px-6 py-3 rounded-full bg-primary text-white font-semibold hover:bg-blue-600 transition-colors flex items-center gap-2">
+            <span class="material-icons">picture_as_pdf</span>
+            Guardar en PDF
+          </button>
+          <button class="relative group px-6 py-3 rounded-full bg-primary text-white font-semibold hover:bg-blue-600 transition-colors flex items-center gap-2">
+            <span class="material-icons">share</span>
+            Compartir
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+  </main>
+
+</div>
+</body>
+</html>

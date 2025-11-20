@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Comunidad - Chatbot IA</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,typography"></script>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
+<script>
+  tailwind.config = {
+    darkMode: "class",
+    theme: {
+      extend: {
+        colors: {
+          primary: "#3b82f6",
+          "background-light": "#f4f4f5",
+          "background-dark": "#18181b",
+        },
+        fontFamily: { display: ["Poppins", "sans-serif"] },
+      },
+    },
+  };
+</script>
+<style>
+  .material-icons { font-size: 24px; line-height: 1; }
+  .interaction-btn { cursor: pointer; transition: color 0.2s; }
+  .interaction-btn:hover { color: #3b82f6; }
+</style>
+</head>
+<body class="font-display bg-background-light dark:bg-background-dark text-zinc-900 dark:text-zinc-100">
+
+<div class="flex h-screen">
+
+  <!-- SIDEBAR -->
+  <aside class="w-64 p-6 flex flex-col justify-between">
+    <div>
+      <div class="flex items-center gap-3 mb-10">
+        <img src="logo.png" class="w-10 h-10 object-contain" alt="Logo">
+        <span class="text-lg font-bold text-zinc-800 dark:text-zinc-200">IAversiesverdad</span>
+      </div>
+
+      <nav class="space-y-3">
+        <a href="AnalisisVeracidadTexto.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg">
+          <span class="material-icons">search</span>
+          <span>Análisis de Veracidad</span>
+        </a>
+        <a href="ResumenNoticiaTexto.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg">
+          <span class="material-icons">description</span>
+          <span>Resumen de Noticia</span>
+        </a>
+        <a href="Chatbot.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg">
+          <span class="material-icons">forum</span>
+          <span>Chatbot IA</span>
+        </a>
+
+        <!-- Comunidad con desplegable -->
+        <div class="relative">
+		  <button id="communityBtn" class="flex items-center gap-4 w-full px-4 py-3 bg-primary/10 text-primary font-semibold rounded-lg justify-between">
+            <a href="ComunidadParaTi.html">
+			<span class="flex items-center gap-4">
+              <span class="material-icons">people</span>
+              <span>Comunidad</span>
+            </span>
+			</a>
+            <span id="communityArrow" class="material-icons transition-transform rotate-90">arrow_forward_ios</span>
+          </button>
+          <div id="communityMenu" class="mt-1 ml-6 flex flex-col space-y-2">
+
+			  <a href="ComunidadMG.html" class="community-submenu flex items-center gap-2 px-4 py-2 text-primary hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg font-medium">
+				<span class="material-icons">thumb_up</span>
+				<span>Me gusta</span>
+			  </a>
+			  <a href="ComunidadRP.html" class="community-submenu flex items-center gap-2 px-4 py-2 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg font-medium">
+				<span class="material-icons">repeat</span>
+				<span>Reposteado</span>
+			  </a>
+			  <a href="ComunidadG.html" class="community-submenu flex items-center gap-2 px-4 py-2 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg font-medium">
+				<span class="material-icons">bookmark</span>
+				<span>Guardado</span>
+			  </a>
+			</div>
+
+        </div>
+      </nav>
+    </div>
+    <div class="space-y-3">
+      <a href="ajustes.html" class="flex items-center gap-4 px-4 py-3 text-zinc-600 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 rounded-lg" href="#">
+        <span class="material-icons">settings</span>
+        <span>Ajustes</span>
+      </a>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="flex-1 p-8 flex flex-col">
+    <header class="flex justify-end mb-8">
+      <a href="usuario.html" class="w-10 h-10 flex items-center justify-center bg-white dark:bg-zinc-800 rounded-full">
+        <span class="material-icons text-zinc-600 dark:text-zinc-400">person</span>
+      </a>
+    </header>
+
+    <div class="flex-1 flex flex-col items-center">
+      <div class="flex flex-col items-center mb-8 w-full max-w-3xl">
+        <h1 class="text-4xl font-bold text-zinc-800 dark:text-zinc-200 mb-4">Me gusta</h1>
+
+        <div class="flex justify-center items-center space-x-8 border-b border-zinc-200 dark:border-zinc-700 pb-3">
+          <a href="ComunidadParaTi.html" class="flex items-center gap-2 pb-3 border-b-2 border-transparent text-zinc-500 dark:text-zinc-400">
+            <span class="material-icons">thumb_up</span>
+            <span>Para ti</span>
+          </a>
+          <a href="ComunidadSiguiendo.html" class="flex items-center gap-2 pb-3 border-b-2 border-transparent text-zinc-500 dark:text-zinc-400">
+            <span class="material-icons">person_add</span>
+            <span>Siguiendo</span>
+          </a>
+          <a href="ComunidadTendencias.html" class="flex items-center gap-2 pb-3 border-b-2 border-transparent text-zinc-500 dark:text-zinc-400">
+            <span class="material-icons">trending_up</span>
+            <span>Tendencias</span>
+          </a>
+          <a href="ComunidadBuscar.html" class="flex items-center gap-2 pb-3 border-b-2 border-transparent text-zinc-500 dark:text-zinc-400">
+            <span class="material-icons">search</span>
+            <span>Buscar</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- FEED CON SCROLL -->
+      <div id="feed" class="flex-1 w-full max-w-3xl bg-white dark:bg-zinc-900 p-6 rounded-lg shadow-sm space-y-6 overflow-y-auto" style="max-height:500px;">
+        <!-- Post de ejemplo -->
+        <div class="post flex flex-col border-b border-zinc-200 dark:border-zinc-700 pb-4">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 bg-zinc-400 dark:bg-zinc-600 rounded-full"></div>
+            <div class="flex flex-col">
+              <span class="font-semibold text-zinc-800 dark:text-zinc-200">Usuario1</span>
+              <span class="text-sm text-zinc-500 dark:text-zinc-400">19/11/2025</span>
+            </div>
+          </div>
+          <p class="mb-3 text-zinc-700 dark:text-zinc-300">Este es un ejemplo de publicación en la comunidad.</p>
+          <div class="flex justify-between items-center text-zinc-500 dark:text-zinc-400 mb-2">
+            <span class="material-icons interaction-btn comment-btn">chat_bubble</span>
+            <span class="material-icons interaction-btn like-btn text-primary">thumb_up</span>
+            <span class="material-icons interaction-btn repost-btn">repeat</span>
+            <span class="material-icons interaction-btn save-btn">bookmark</span>
+            <span class="material-icons interaction-btn">share</span>
+          </div>
+          <div class="comments flex flex-col space-y-2 mb-2"></div>
+          <div class="comment-area mt-3 hidden">
+            <textarea class="w-full bg-transparent border border-zinc-300 dark:border-zinc-700 rounded-lg p-2 text-zinc-700 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500" placeholder="Escribe tu comentario..."></textarea>
+            <input type="file" accept="image/*" class="mt-2 file-input"/>
+            <button class="mt-2 bg-primary text-white py-1 px-4 rounded-lg hover:bg-blue-600 transition-colors publish-comment">Publicar</button>
+          </div>
+        </div>
+		
+		<!-- Post de ejemplo -->
+        <div class="post flex flex-col border-b border-zinc-200 dark:border-zinc-700 pb-4">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 bg-zinc-400 dark:bg-zinc-600 rounded-full"></div>
+            <div class="flex flex-col">
+              <span class="font-semibold text-zinc-800 dark:text-zinc-200">Usuario1</span>
+              <span class="text-sm text-zinc-500 dark:text-zinc-400">19/11/2025</span>
+            </div>
+          </div>
+          <p class="mb-3 text-zinc-700 dark:text-zinc-300">Este es un ejemplo de publicación en la comunidad.</p>
+          <div class="flex justify-between items-center text-zinc-500 dark:text-zinc-400 mb-2">
+            <span class="material-icons interaction-btn comment-btn">chat_bubble</span>
+            <span class="material-icons interaction-btn like-btn text-primary">thumb_up</span>
+            <span class="material-icons interaction-btn repost-btn">repeat</span>
+            <span class="material-icons interaction-btn save-btn">bookmark</span>
+            <span class="material-icons interaction-btn">share</span>
+          </div>
+          <div class="comments flex flex-col space-y-2 mb-2"></div>
+          <div class="comment-area mt-3 hidden">
+            <textarea class="w-full bg-transparent border border-zinc-300 dark:border-zinc-700 rounded-lg p-2 text-zinc-700 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500" placeholder="Escribe tu comentario..."></textarea>
+            <input type="file" accept="image/*" class="mt-2 file-input"/>
+            <button class="mt-2 bg-primary text-white py-1 px-4 rounded-lg hover:bg-blue-600 transition-colors publish-comment">Publicar</button>
+          </div>
+        </div>
+		
+		<!-- Post de ejemplo -->
+        <div class="post flex flex-col border-b border-zinc-200 dark:border-zinc-700 pb-4">
+          <div class="flex items-center gap-3 mb-2">
+            <div class="w-10 h-10 bg-zinc-400 dark:bg-zinc-600 rounded-full"></div>
+            <div class="flex flex-col">
+              <span class="font-semibold text-zinc-800 dark:text-zinc-200">Usuario1</span>
+              <span class="text-sm text-zinc-500 dark:text-zinc-400">19/11/2025</span>
+            </div>
+          </div>
+          <p class="mb-3 text-zinc-700 dark:text-zinc-300">Este es un ejemplo de publicación en la comunidad.</p>
+          <div class="flex justify-between items-center text-zinc-500 dark:text-zinc-400 mb-2">
+            <span class="material-icons interaction-btn comment-btn">chat_bubble</span>
+            <span class="material-icons interaction-btn like-btn text-primary">thumb_up</span>
+            <span class="material-icons interaction-btn repost-btn">repeat</span>
+            <span class="material-icons interaction-btn save-btn">bookmark</span>
+            <span class="material-icons interaction-btn">share</span>
+          </div>
+          <div class="comments flex flex-col space-y-2 mb-2"></div>
+          <div class="comment-area mt-3 hidden">
+            <textarea class="w-full bg-transparent border border-zinc-300 dark:border-zinc-700 rounded-lg p-2 text-zinc-700 dark:text-zinc-100 placeholder:text-zinc-400 dark:placeholder:text-zinc-500" placeholder="Escribe tu comentario..."></textarea>
+            <input type="file" accept="image/*" class="mt-2 file-input"/>
+            <button class="mt-2 bg-primary text-white py-1 px-4 rounded-lg hover:bg-blue-600 transition-colors publish-comment">Publicar</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- REDACTAR POST eliminado -->
+      <div id="newPostContainer" class="hidden"></div>
+    </div>
+  </main>
+</div>
+
+<script>
+  // Submenu comunidad
+  const communityBtn = document.getElementById('communityBtn');
+  const communityMenu = document.getElementById('communityMenu');
+  const communityArrow = document.getElementById('communityArrow');
+  communityBtn.addEventListener('click', () => {
+    communityMenu.classList.toggle('hidden');
+    communityArrow.classList.toggle('rotate-90');
+  });
+
+  const feed = document.getElementById('feed');
+  const allPosts = Array.from(feed.querySelectorAll('.post'));
+
+  function bindPostEvents(post) {
+    const commentBtn = post.querySelector('.comment-btn');
+    const publishBtn = post.querySelector('.publish-comment');
+    const likeBtn = post.querySelector('.like-btn');
+    const repostBtn = post.querySelector('.repost-btn');
+    const saveBtn = post.querySelector('.save-btn');
+
+    if(commentBtn){
+      commentBtn.addEventListener('click', () => {
+        const commentArea = post.querySelector('.comment-area');
+        commentArea.classList.toggle('hidden');
+      });
+    }
+
+    if(publishBtn){
+      publishBtn.addEventListener('click', () => {
+        const commentArea = post.querySelector('.comment-area');
+        const textarea = commentArea.querySelector('textarea');
+        const fileInput = commentArea.querySelector('.file-input');
+        const commentText = textarea.value.trim();
+        if (!commentText && !fileInput.files.length) return;
+
+        const commentsDiv = post.querySelector('.comments');
+        const newComment = document.createElement('div');
+        newComment.className = 'bg-zinc-100 dark:bg-zinc-800 p-2 rounded-lg text-zinc-700 dark:text-zinc-200 text-sm';
+        let imgHTML = '';
+        if(fileInput.files.length > 0){
+          const fileURL = URL.createObjectURL(fileInput.files[0]);
+          imgHTML = `<img src="${fileURL}" class="mt-2 rounded-lg max-h-48 w-full object-contain"/>`;
+        }
+        newComment.innerHTML = `<span class="font-semibold">Yo</span> <span class="text-xs text-zinc-500 dark:text-zinc-400">${new Date().toLocaleDateString()}</span>: ${commentText}${imgHTML}`;
+        commentsDiv.appendChild(newComment);
+
+        textarea.value = '';
+        fileInput.value = '';
+        commentArea.classList.add('hidden');
+        feed.scrollTop = feed.scrollHeight;
+      });
+    }
+
+    // Like: toggle azul y si se quita, eliminar post
+    if(likeBtn) {
+      likeBtn.addEventListener('click', () => {
+        likeBtn.classList.toggle('text-primary');
+        if(!likeBtn.classList.contains('text-primary')){
+          post.style.display = 'none';
+        }
+      });
+    }
+
+    // Repost y Guardado solo toggle azul
+    if(repostBtn) {
+      repostBtn.addEventListener('click', () => repostBtn.classList.toggle('text-primary'));
+    }
+    if(saveBtn) {
+      saveBtn.addEventListener('click', () => saveBtn.classList.toggle('text-primary'));
+    }
+  }
+
+  allPosts.forEach(bindPostEvents);
+
+  // Submenú Comunidad azul
+  const communityLinks = document.querySelectorAll('.community-submenu');
+
+  communityLinks.forEach(link => {
+    link.addEventListener('click', (e) => {
+      communityLinks.forEach(l => {
+        l.classList.remove('text-primary');
+        l.classList.add('text-zinc-600', 'dark:text-zinc-400');
+      });
+      e.currentTarget.classList.remove('text-zinc-600', 'dark:text-zinc-400');
+      e.currentTarget.classList.add('text-primary');
+
+      const text = e.currentTarget.textContent.trim();
+      if(text.includes('Me gusta')) window.location.href = 'ComunidadMG.html';
+      else if(text.includes('Reposteado')) window.location.href = 'ComunidadRP.html';
+      else if(text.includes('Guardado')) window.location.href = 'ComunidadG.html';
+    });
+  });
+</script>
+
+</body>
+</html>
